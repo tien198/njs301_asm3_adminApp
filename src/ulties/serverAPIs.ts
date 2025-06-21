@@ -16,5 +16,7 @@ export enum ServerAPI {
 
     // auth
     signup = api + 'auth/signup/',
-    login = api + 'auth/login/'
+    login = api + 'auth/login/',
+    logout = api + 'auth/logout/',
+    getStatus = api + 'auth/status/',
 }   

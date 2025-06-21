@@ -1,4 +1,4 @@
-export default interface IProdError {
+export interface IProdError {
     prodId: string
     title: string
     price: string

@@ -4,7 +4,7 @@ export enum AppRoutes {
     Auth = 'auth',
     Login = "login",
     Logout = "logout",
-    Register = "register",
+    Singup = "signup",
 
     Admin = "admin",
 
@@ -17,4 +17,26 @@ export enum AppRoutes {
 
     Orders = "orders",
     Order = "order",
+}
+
+
+export enum AppRoutes_Abs {
+    Home = "/",
+
+    Auth = '/' + AppRoutes.Auth,
+    Login = '/' + AppRoutes.Login,
+    Logout = '/' + AppRoutes.Logout,
+    Singup = '/' + AppRoutes.Singup,
+
+    Admin = '/' + AppRoutes.Admin,
+
+    Products = '/' + AppRoutes.Products,
+    Product = '/' + AppRoutes.Product,
+
+    EditProduct = '/' + AppRoutes.EditProduct,
+    CreateProduct = '/' + AppRoutes.CreateProduct,
+    DeleteProduct = '/' + AppRoutes.DeleteProduct,
+
+    Orders = '/' + AppRoutes.Orders,
+    Order = '/' + AppRoutes.Order,
 }
