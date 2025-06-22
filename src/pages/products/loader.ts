@@ -2,19 +2,17 @@ import type { IProduct } from "../../interfaces/product";
 
 import { getDefer } from "../../ulties/fetcher/getDerfer";
 import { ServerAPI } from "../../ulties/serverAPIs";
-import productsStore from "./store";
 
-export type LoaderData = {
-    products: Promise<IProduct[]>
+export type ProdLoader = {
+    products: Promise<IProduct[] | null>
 }
 
-export async function loader() {
+export function loader(): ProdLoader {
     try {
-        const products = await getDefer<IProduct[]>(ServerAPI.products, true)
-        productsStore.getState().setProducts(products)
-        return products
+        const products = getDefer<IProduct[]>(ServerAPI.products, true)
+        return { products }
     } catch (error) {
         console.error(error)
-        return null
+        return { products: Promise.resolve(null) }
     }
 }

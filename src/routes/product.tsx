@@ -10,9 +10,10 @@ const productRouter: RouteObject = {
             element: <Product />,
             loader: () => import('../pages/products/loader').then(m => m.loader())
         },
-        // {
-        // path
-        // }
+        {
+            path: AppRoutes.DeleteProduct,
+            action: (args) => import('../pages/deleteProduct/action').then(m => m.action(args))
+        }
     ]
 }
 

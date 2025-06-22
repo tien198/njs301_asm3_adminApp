@@ -2,17 +2,16 @@ export enum ServerAPI {
     // base = 'https://rjs301asm3backend-production.up.railway.app/',
     base = 'http://localhost:5000/',
     api = base + 'api/',
+    admin = 'admin/',
 
-    products = api + 'shop/products/',
-    product = api + 'shop/product/',
-    findByCategory = api + 'shop/find-by-category/',
+    products = api + admin + 'products/',
+    
+    findByCategory = api + admin + 'find-by-category/',
 
-    getCart = api + 'shop/cart',
-    addToCart = api + 'shop/add-to-cart',
+    // admin
 
-    createOrder = api + 'shop/create-order',
-    getOrders = api + 'shop/orders',
-    getOrderById = api + 'shop/order',
+    getOrders = api + admin + 'orders',
+    getOrderById = api + admin + 'order',
 
     // auth
     signup = api + 'auth/signup/',

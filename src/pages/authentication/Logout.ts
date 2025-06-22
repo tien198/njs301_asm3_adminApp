@@ -1,7 +1,10 @@
 import { redirect } from "react-router";
-import { clearUserInfor } from "../../ultil/storageUltil/authenInfor";
+import { ServerAPI } from "../../ulties/serverAPIs";
 
-export function action() {
-    clearUserInfor()
+export async function action() {
+    await fetch(ServerAPI.logout, {
+        method: 'POST',
+        credentials: 'include',
+    })
     return redirect('/')
 }

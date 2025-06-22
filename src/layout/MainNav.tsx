@@ -1,28 +1,33 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { NavLinkRenderProps } from "react-router";
 import { NavLink, useFetcher } from "react-router";
 import Container from "../components/UI/Container";
 
 // css
 import classes from "./MainNav.module.css";
-import { AppRoutes } from "../ulties/appRoutes";
+import { AppRoutes_Abs as AbsRoute } from "../ulties/appRoutes";
 
 import { FaUser } from "react-icons/fa";
-import { getUserInfor } from "../ulties/storageUltil/authenInfor";
+import { useAppSelector } from "../hooks/reduxHooks";
 
 
 function navLinkStateClass({ isActive }: NavLinkRenderProps) {
-    const active = isActive ? 'link-active' : ''
-    return active + ' flex items-center gap-2'
+    const active = isActive ? 'text-orange-700' : ''
+    return active + ' flex  gap-2 hover:cursor-pointer'
 }
 
 function NavLeftUl() {
     return (
-        <ul className="flex gap-4">
+        <ul className="flex gap-4 items-center">
             <li>
-                <NavLink to={AppRoutes.Home} className={navLinkStateClass}>
+                <NavLink to={AbsRoute.Home} className={navLinkStateClass}>
                     <span>Admin</span>
                     <span>Boutique</span>
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to={AbsRoute.Products} className={navLinkStateClass}>
+                    Products
                 </NavLink>
             </li>
         </ul>
@@ -30,8 +35,8 @@ function NavLeftUl() {
 }
 
 function NavRightUl() {
-    const isLogin = !!getUserInfor()
-    const userInfo = useMemo(() => getUserInfor(), [isLogin])
+    const isLogin = !!useAppSelector(state => state.authen.email)
+    const userInfo = useAppSelector(state => state.authen)
 
     // set user name to re-render
     const [userName, setUserName] = useState(userInfo?.name)
@@ -41,20 +46,20 @@ function NavRightUl() {
     const submit = useFetcher().submit
 
     const logout = useCallback(function logout() {
-        submit(null, { action: AppRoutes.Logout, method: 'POST' })
+        submit(null, { action: AbsRoute.Logout, method: 'POST' })
     }, [])
 
     return (
         <ul className="flex gap-6 w-full justify-end md:w-auto">
 
             {!isLogin && <li>
-                <NavLink to={AppRoutes.Login} className={navLinkStateClass}>
+                <NavLink to={AbsRoute.Login} className={navLinkStateClass}>
                     <FaUser className="mr-1" />
                     <span className="hidden md:inline">Sign in</span>
                 </NavLink>
             </li>}
             {isLogin && <li>
-                <NavLink to={AppRoutes.Login} className={navLinkStateClass}>
+                <NavLink to={AbsRoute.Login} className={navLinkStateClass}>
                     <span className="hidden md:inline capitalize">{userName}</span>
                 </NavLink>
             </li>}

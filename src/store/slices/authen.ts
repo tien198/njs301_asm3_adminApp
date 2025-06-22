@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import type { IUser } from '../../interfaces/user';
 
-export type AuthenState = {
-    email: string; name: string; phone: string; avatarUrl: string; role: string;
-}
 
-const initialState: AuthenState = {
+
+const initialState: IUser = {
     email: '', name: '', phone: '', avatarUrl: '', role: ''
 }
 
@@ -13,12 +12,11 @@ export const authenSlice = createSlice({
     name: 'authen',
     initialState,
     reducers: {
-        setAuthen: (state, action: PayloadAction<AuthenState>) => {
-            state.email = action.payload.email;
-            state.name = action.payload.name;
-            state.phone = action.payload.phone;
-            state.avatarUrl = action.payload.avatarUrl;
-            state.role = action.payload.role;
+        setAuthen: (state, action: PayloadAction<IUser>) => {
+            return {
+                ...state,
+                ...action.payload
+            }
         },
         clearAuthen: () => {
             return initialState;

@@ -2,7 +2,8 @@ import type { IAuthenResponse } from "../../../interfaces/response/fullfill/auth
 
 import { redirect, type ActionFunctionArgs } from "react-router"
 import { ServerAPI } from "../../../ulties/serverAPIs"
-import { addUserInfor } from "../../../ulties/storageUltil/authenInfor"
+import { store } from "../../../store"
+import { setAuthen } from "../../../store/slices/authen"
 
 export async function action(args: ActionFunctionArgs) {
     // args
@@ -22,7 +23,8 @@ export async function action(args: ActionFunctionArgs) {
 
     if (response.status === 201) {
         const authenRes: IAuthenResponse = (await response.json())
-        addUserInfor(authenRes)
+        store.dispatch(setAuthen(authenRes.user))
+
     }
     return redirect('/')
 }

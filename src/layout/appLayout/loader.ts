@@ -1,7 +1,8 @@
 import { data } from "react-router";
 import { ServerAPI as API } from "../../ulties/serverAPIs";
+import type { IUser } from "../../interfaces/user";
 
-export type AuthStatus = { email: string; name: string; phone: string; avatarUrl: string; role: string; }
+export type AuthStatus = { user: IUser }
 
 export async function loader(): Promise<AuthStatus | undefined> {
     try {

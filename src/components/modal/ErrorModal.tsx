@@ -1,4 +1,4 @@
-import type { ModalImplementProps } from "./types/IModalImplementProps"
+import type { ModalImplementProps } from "./types/modalImplementProps"
 import type { IRes } from "../../interfaces/response"
 
 import { useStore } from "zustand"

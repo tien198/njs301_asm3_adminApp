@@ -1,4 +1,4 @@
-import type { ModalImplementProps } from "./types/IModalImplementProps"
+import type { ModalImplementProps } from "./types/modalImplementProps"
 
 import { useStore } from "zustand"
 
