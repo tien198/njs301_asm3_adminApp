@@ -20,7 +20,7 @@ function NavLeftUl() {
     return (
         <ul className="flex gap-4 items-center">
             <li>
-                <NavLink to={AbsRoute.Home} className={navLinkStateClass}>
+                <NavLink to={AbsRoute.Admin} className={navLinkStateClass}>
                     <span>Admin</span>
                     <span>Boutique</span>
                 </NavLink>

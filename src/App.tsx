@@ -11,7 +11,7 @@ import Error from "./pages/Error";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/admin",
     element: <AppLayout />,
     // this loader check the authorization status of the user
     loader: () => import("./layout/appLayout/loader").then(i => i.loader()),

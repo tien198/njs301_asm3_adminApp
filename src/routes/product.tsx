@@ -3,7 +3,7 @@ import { AppRoutes } from "../ulties/appRoutes";
 import Product from "../pages/products";
 
 const productRouter: RouteObject = {
-    path: '/',
+    path: '',
     children: [
         {
             path: AppRoutes.Products,

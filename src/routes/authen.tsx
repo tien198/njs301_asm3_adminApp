@@ -4,7 +4,7 @@ import Login from "../pages/authentication/Login";
 import Signup from "../pages/authentication/Signup";
 
 const authenRouter: RouteObject = {
-    path: '/',
+    path: '',
     element: <Outlet />,
     children: [
         {

@@ -23,20 +23,21 @@ export enum AppRoutes {
 export enum AppRoutes_Abs {
     Home = "/",
 
-    Auth = '/' + AppRoutes.Auth,
-    Login = '/' + AppRoutes.Login,
-    Logout = '/' + AppRoutes.Logout,
-    Singup = '/' + AppRoutes.Singup,
+    Admin = '/' + AppRoutes.Admin+ '/',
 
-    Admin = '/' + AppRoutes.Admin,
+    Auth = Admin + AppRoutes.Auth,
+    Login = Admin + AppRoutes.Login,
+    Logout = Admin + AppRoutes.Logout,
+    Singup = Admin + AppRoutes.Singup,
 
-    Products = '/' + AppRoutes.Products,
-    Product = '/' + AppRoutes.Product,
 
-    EditProduct = '/' + AppRoutes.EditProduct,
-    CreateProduct = '/' + AppRoutes.CreateProduct,
-    DeleteProduct = '/' + AppRoutes.DeleteProduct,
+    Products = Admin + AppRoutes.Products,
+    Product = Admin + AppRoutes.Product,
 
-    Orders = '/' + AppRoutes.Orders,
-    Order = '/' + AppRoutes.Order,
+    EditProduct = Admin + AppRoutes.EditProduct,
+    CreateProduct = Admin + AppRoutes.CreateProduct,
+    DeleteProduct = Admin + AppRoutes.DeleteProduct,
+
+    Orders = Admin + AppRoutes.Orders,
+    Order = Admin + AppRoutes.Order,
 }
