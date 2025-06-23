@@ -1,3 +1,3 @@
 export function Fallback() {
-    return <p>Fallback</p>
+    return <span>Fallback</span>
 }

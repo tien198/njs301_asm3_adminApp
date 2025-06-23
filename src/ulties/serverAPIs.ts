@@ -5,13 +5,16 @@ export enum ServerAPI {
     admin = 'admin/',
 
     products = api + admin + 'products/',
-    
+
     findByCategory = api + admin + 'find-by-category/',
 
     // admin
 
     getOrders = api + admin + 'orders',
     getOrderById = api + admin + 'order',
+
+    userCount = api + admin + 'user-count',
+    orderCount = api + admin + 'order-count',
 
     // auth
     signup = api + 'auth/signup/',
