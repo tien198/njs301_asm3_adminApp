@@ -20,13 +20,13 @@ function NavLeftUl() {
     return (
         <ul className="flex gap-4 items-center">
             <li>
-                <NavLink to={AbsRoute.Admin} className={navLinkStateClass}>
+                <NavLink to={AbsRoute.Admin} end className={navLinkStateClass}>
                     <span>Admin</span>
                     <span>Boutique</span>
                 </NavLink>
             </li>
             <li>
-                <NavLink to={AbsRoute.Products} className={navLinkStateClass}>
+                <NavLink to={AbsRoute.Products} end className={navLinkStateClass}>
                     Products
                 </NavLink>
             </li>
