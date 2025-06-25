@@ -18,6 +18,10 @@ const authenRouter: RouteObject = {
             action: (args) => import('../pages/authentication/Signup/action').then(i => i.action(args))
 
         },
+        {
+            path: AppRoutes.Logout,
+            action: () => import('../pages/authentication/Logout').then(i => i.action())
+        }
     ]
 }
 

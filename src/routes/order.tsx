@@ -5,6 +5,7 @@ import Order from "../pages/order";
 
 const orderRouter: RouteObject = {
     path: '',
+    loader: () => import('./loader/isAdminChecking').then(mod => mod.isAdmin()),
     children: [
         {
             index: true,

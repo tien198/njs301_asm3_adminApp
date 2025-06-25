@@ -1,10 +1,11 @@
-import { useRouteError } from 'react-router';
+import { useRouteError, type ErrorResponse } from 'react-router';
 import MainNav from '../layout/MainNav';
 
 export default function Error() {
-    const error: any = useRouteError()
-    let title = 'An error has occurred!'
-    let message = 'Something went wrong!'
+    const error = useRouteError() as Error & ErrorResponse;
+
+    let title = error.message || 'Error'
+    let message = error.data || 'Something went wrong!'
 
     // message = JSON.parse(error.data).message
     if (error.status === 404) {
@@ -12,12 +13,12 @@ export default function Error() {
         message = 'Could not find resoure or page.'
     }
     else if (error.status === 401) {
-        title = 'Unauthorized!'
-        message = error.data.message || 'You do not have permission for this resoure.'
+        title = error.data || 'Unauthorized'
+        message = error.statusText || 'You do not have permission for this resoure.'
         // message = error.data.message
     }
     else if (error.status === 500)
-        message = error.data.message
+        message = error.data || 'Server error'
 
     return (
         <>
@@ -29,5 +30,5 @@ export default function Error() {
             </div>
             <div className='h-96'></div>
         </>
-    );
+    )
 }

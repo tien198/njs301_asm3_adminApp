@@ -14,8 +14,6 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AppLayout />,
-    // this loader check the authorization status of the user
-    loader: () => import("./layout/appLayout/loader").then(i => i.loader()),
     errorElement: <Error />,
     children: [
       authenRouter,
