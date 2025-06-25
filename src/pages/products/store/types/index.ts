@@ -1,7 +1,7 @@
 import type { IProduct } from "../../../../interfaces/product"
 
 export type ProductsState = {
-    products: IProduct[]
+    products?: IProduct[]
     query: string
 }
 export type ProductsActions = {

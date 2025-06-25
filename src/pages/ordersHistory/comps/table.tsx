@@ -2,7 +2,7 @@ import { Await, useLoaderData } from "react-router";
 import type { OrderLoader } from "../loader";
 import Rows from "./rows";
 import { Suspense } from "react";
-import TrFallback from "../../../components/trFallback";
+import TrFallback from "../../../components/UI/trFallback";
 
 export default function Table() {
     const loader: OrderLoader = useLoaderData();

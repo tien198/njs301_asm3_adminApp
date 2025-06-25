@@ -19,13 +19,6 @@
     font-weight: bold;
 }
 
-.actions {
-    display: flex;
-    justify-content: space-between;
-    gap: 2.5rem;
-    /* gap-10 = 2.5rem */
-}
-
 .error-list {
     display: flex;
     flex-direction: column;

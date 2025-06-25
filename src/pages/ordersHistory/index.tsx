@@ -10,14 +10,17 @@ export default function OrderHistory() {
   const [orderCount, setOrderCount] = useState(NaN)
   useEffect(() => {
     loader.userCount.then(i =>
-      i && setUserCount(i)
+      i !== null && i !== undefined && typeof i === 'number' && setUserCount(i)
     )
 
     loader.orderCount.then(i =>
-      i && setOrderCount(i)
+      i !== null && i !== undefined && typeof i === 'number' && setOrderCount(i)
     )
   }, [loader])
 
+  useEffect(() => {
+    console.log('orderCount', orderCount);
+  }, [orderCount])
 
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
@@ -25,7 +28,7 @@ export default function OrderHistory() {
       <div className="grid grid-cols-3 gap-4 mb-10">
         <StatsCard label="Clients" value={String(userCount)} />
         <StatsCard label="Earnings of Month" value="NaN VND" />
-        <StatsCard label="New Order" value={String(orderCount)} />
+        <StatsCard label="New Orders" value={String(orderCount)} />
       </div>
       <Table />
     </div>

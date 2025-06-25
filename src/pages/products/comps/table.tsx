@@ -4,6 +4,8 @@ import productsStore from '../store';
 import type { ProdLoader } from '../loader';
 import { useLoaderData } from 'react-router';
 import { useEffect } from 'react';
+import TrFallback from '../../../components/UI/trFallback';
+import type { IProduct } from '../../../interfaces/product';
 
 export default function ProductTable() {
   const loader = useLoaderData<ProdLoader>()
@@ -13,10 +15,10 @@ export default function ProductTable() {
       if (prods)
         setProducts(prods)
     })
-  }, [loader])
+  }, [loader, setProducts])
   const products = useStore(productsStore, state => state.products)
   const query = useStore(productsStore, state => state.query)
-  const filtered = products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()))
+  const filtered = products?.filter(p => p.name.toLowerCase().includes(query.toLowerCase()))
 
   return (
     <table border={1} className="table-auto w-full text-left ">
@@ -32,11 +34,21 @@ export default function ProductTable() {
       </thead>
       <tbody>
         {/* filtered is the products that match the query */}
-        {filtered.length > 0
-          ? filtered.map((p, index) =>
-            <Row key={p.id} product={p} isGray={index % 2 !== 0} />)
-          : <tr><td colSpan={6} className="text-center">No products found</td></tr>}
+        {filtered && <RowsList prods={filtered} />}
+        {!filtered && <TrFallback />}
       </tbody>
     </table>
+  );
+}
+
+function RowsList({ prods }: { prods: IProduct[] }) {
+  return (
+    <>
+      {prods.length > 0
+        ? prods.map((p, index) =>
+          <Row key={p.id} product={p} isGray={index % 2 !== 0} />)
+        : <tr><td colSpan={6} className="text-center">No products found</td></tr>}
+
+    </>
   );
 }

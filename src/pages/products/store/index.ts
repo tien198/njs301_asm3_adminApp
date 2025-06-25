@@ -5,7 +5,7 @@ import { createStore } from "zustand";
 
 
 const productsStore = createStore<ProductsStore>(set => ({
-    products: [],
+    products: undefined,
     query: '',
     // isFiltered decide whether product was displayed in the table
     setProducts: (products: IProduct[]) => set(state => ({ ...state, products })),

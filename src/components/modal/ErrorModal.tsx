@@ -7,20 +7,28 @@ import informModalStyle from './InformModal.module.css'
 
 import Modal from "./Modal"
 import modalStore from "./store"
-import defFnc from "./ulties/defaultBtnAction"
+import { useCallback } from "react"
 
 
 
 
-export default function ErrorModal({ truthyFnc = defFnc, falsyFnc = defFnc, oncloseFnc }: ModalImplementProps) {
-    const status = useStore(modalStore, state => state.resonse.status)
-    const message = useStore(modalStore, state => state.resonse.message)
-    const errors = useStore(modalStore, state => (state.resonse as IRes)?.cause)
+export default function ErrorModal({ truthyFnc, falsyFnc, oncloseFnc }: ModalImplementProps) {
+    const res = useStore(modalStore, state => state.resonse as IRes)
+    const hide = useStore(modalStore, state => state.hide)
 
+    const defTruthyFnc = useCallback(function () {
+        hide()
+        truthyFnc?.()
+    }, [truthyFnc, hide])
+
+    const defFalsyFnc = useCallback(function () {
+        hide()
+        falsyFnc?.()
+    }, [falsyFnc, hide])
 
     let errorEntries: [string, string][] = []
-    if (errors)
-        errorEntries = Object.entries(errors)
+    if (res?.cause)
+        errorEntries = Object.entries(res.cause)
 
 
     const type = useStore(modalStore, state => state.type)
@@ -30,16 +38,16 @@ export default function ErrorModal({ truthyFnc = defFnc, falsyFnc = defFnc, oncl
     return (
         <Modal onCloseFnc={oncloseFnc}>
             <div className={informModalStyle["container"]}>
-                <span className={informModalStyle["status"]}>{status}</span>
-                <span>{message}</span>
+                <span className={informModalStyle["status"]}>{res?.status}</span>
+                <span>{res?.message}</span>
                 <span className={informModalStyle['error-list']}>{
                     errorEntries.map(i =>
                         <span key={i[0]} >{i[1]}</span>
                     )
                 }</span>
-                <div className={informModalStyle["actions"]}>
-                    <span><button onClick={truthyFnc}>Ok</button></span>
-                    <span><button onClick={falsyFnc}>Cancel</button></span>
+                <div className='flex justify-between items-center gap-10'>
+                    <span><button className="text-white bg-gray-800 px-10 py-1.5 hover:bg-gray-950 hover:rounded" onClick={defTruthyFnc}>Ok</button></span>
+                    <span><button className="px-6 py-1.5 border border-white hover:border hover:border-gray-800" onClick={defFalsyFnc}>Cancel</button></span>
                 </div>
             </div>
         </Modal>

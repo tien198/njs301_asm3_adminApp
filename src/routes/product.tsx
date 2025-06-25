@@ -1,6 +1,7 @@
 import type { RouteObject } from "react-router";
 import { AppRoutes } from "../ulties/appRoutes";
 import Product from "../pages/products";
+import NewProduct from '../pages/newProduct';
 
 const productRouter: RouteObject = {
     path: '',
@@ -13,7 +14,7 @@ const productRouter: RouteObject = {
         },
         {
             path: AppRoutes.CreateProduct,
-            element: <Product />,
+            element: <NewProduct />,
         },
         {
             path: AppRoutes.EditProduct,

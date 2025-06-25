@@ -10,12 +10,14 @@ const modalStore = createStore<ModalStore>((set, get) => ({
     resonse: { message: '' },
     type: 'inform',
 
-    show: (type, response) => set(state => ({
-        ...state,
-        type: type || state.type,
-        resonse: response || state.resonse,
-        hidden: ''
-    })),
+    show: (type, response) => {
+        if (type) get().setType(type)
+        if (response) get().setResponse(response)
+        set(state => ({
+            ...state,
+            hidden: ''
+        }))
+    },
     setHidden: (hiddenClass) => set(state => ({
         ...state, hidden: hiddenClass
     })),
@@ -24,7 +26,7 @@ const modalStore = createStore<ModalStore>((set, get) => ({
 
         setTimeout(() => {
             get().setHidden(modalStyle['hidden'])
-        }, 3000);
+        }, 300);
     },
     setResponse: (res) => set((state) => ({
         ...state, resonse: res

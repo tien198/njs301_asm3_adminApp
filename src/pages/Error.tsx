@@ -1,8 +1,13 @@
-import { useRouteError, type ErrorResponse } from 'react-router';
+import { useNavigate, useRouteError, type ErrorResponse, type NavigateFunction } from 'react-router';
 import MainNav from '../layout/MainNav';
+import ErrorModal from '../components/modal/ErrorModal';
+import { AppRoutes_Abs } from '../ulties/appRoutes';
 
 export default function Error() {
     const error = useRouteError() as Error & ErrorResponse;
+    let nav: NavigateFunction | undefined = useNavigate()
+    if (error.status !== 401)
+        nav = undefined
 
     let title = error.message || 'Error'
     let message = error.data || 'Something went wrong!'
@@ -29,6 +34,7 @@ export default function Error() {
                 <p>{message}</p>
             </div>
             <div className='h-96'></div>
+            <ErrorModal truthyFnc={() => nav?.(AppRoutes_Abs.Login)} />
         </>
     )
 }

@@ -7,12 +7,11 @@ import informModalStyle from './InformModal.module.css'
 import Button from "../UI/Button"
 import Modal from "./Modal"
 import modalStore from "./store"
-import defFnc from "./ulties/defaultBtnAction"
 
 
 
 
-export default function InformModal({ truthyFnc = defFnc, falsyFnc = defFnc, oncloseFnc }: ModalImplementProps) {
+export default function InformModal({ truthyFnc, falsyFnc, oncloseFnc }: ModalImplementProps) {
     const message = useStore(modalStore,
         state => state.resonse.message
     )
