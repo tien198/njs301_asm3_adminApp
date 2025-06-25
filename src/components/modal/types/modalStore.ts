@@ -14,8 +14,9 @@ type ModalState = {
 }
 
 type ModalAction = {
-    show: () => void
+    show: <T extends ModalType>(type?: T, respones?: IRes) => void
     setHidden: (hiddenClass: string) => void
+    hide: () => void
     setResponse: (res: IRes) => void
     setType: (type: ModalType) => void
 }
