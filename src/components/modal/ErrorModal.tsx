@@ -27,8 +27,8 @@ export default function ErrorModal({ truthyFnc, falsyFnc, oncloseFnc }: ModalImp
     }, [falsyFnc, hide])
 
     let errorEntries: [string, string][] = []
-    if (res?.cause)
-        errorEntries = Object.entries(res.cause)
+    if (res?.data)
+        errorEntries = Object.entries(res.data)
 
 
     const type = useStore(modalStore, state => state.type)
@@ -39,7 +39,7 @@ export default function ErrorModal({ truthyFnc, falsyFnc, oncloseFnc }: ModalImp
         <Modal onCloseFnc={oncloseFnc}>
             <div className={informModalStyle["container"]}>
                 <span className={informModalStyle["status"]}>{res?.status}</span>
-                <span>{res?.message}</span>
+                <span>{res?.statusText}</span>
                 <span className={informModalStyle['error-list']}>{
                     errorEntries.map(i =>
                         <span key={i[0]} >{i[1]}</span>

@@ -9,28 +9,28 @@ export default function Error() {
     if (error.status !== 401)
         nav = undefined
 
-    let title = error.message || 'Error'
-    let message = error.data || 'Something went wrong!'
+    let statusText = error.statusText || 'Error'
+    let message = error.data.message || 'Something went wrong!'
 
     // message = JSON.parse(error.data).message
     if (error.status === 404) {
-        title = 'Not Found!'
+        statusText = 'Not Found!'
         message = 'Could not find resoure or page.'
     }
     else if (error.status === 401) {
-        title = error.data || 'Unauthorized'
-        message = error.statusText || 'You do not have permission for this resoure.'
+        statusText = error.statusText || 'Unauthorized'
+        message = error.data.message || 'You do not have permission for this resoure.'
         // message = error.data.message
     }
     else if (error.status === 500)
-        message = error.data || 'Server error'
+        message = error.data.message || 'Server error'
 
     return (
         <>
             <MainNav />
             <div className='h-32 lg:h-60'></div>
             <div className='flex flex-col items-center w-full gap-5'>
-                <h3 className='uppercase text-3xl font-bold '>{title}</h3>
+                <h3 className='uppercase text-3xl font-bold '>{statusText}</h3>
                 <p>{message}</p>
             </div>
             <div className='h-96'></div>
