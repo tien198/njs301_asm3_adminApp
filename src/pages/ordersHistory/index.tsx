@@ -18,9 +18,6 @@ export default function OrderHistory() {
     )
   }, [loader])
 
-  useEffect(() => {
-    console.log('orderCount', orderCount);
-  }, [orderCount])
 
   return (
     <div className="p-8 bg-gray-50 min-h-screen">

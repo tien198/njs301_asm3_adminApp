@@ -1,11 +1,16 @@
-import Row from './row';
+import type { IProduct } from '../../../interfaces/product';
+
 import { useStore } from 'zustand';
+import { useCallback, useEffect } from 'react';
+
 import productsStore from '../store';
 import type { ProdLoader } from '../loader';
-import { useLoaderData } from 'react-router';
-import { useEffect } from 'react';
+import { useFetcher, useLoaderData } from 'react-router';
 import TrFallback from '../../../components/UI/trFallback';
-import type { IProduct } from '../../../interfaces/product';
+import { AppRoutes_Abs as AbsRoute } from "../../../ulties/appRoutes";
+import Row from './row';
+
+
 
 export default function ProductTable() {
   const loader = useLoaderData<ProdLoader>()
@@ -42,11 +47,21 @@ export default function ProductTable() {
 }
 
 function RowsList({ prods }: { prods: IProduct[] }) {
+  const submit = useFetcher().submit
+
+  const deleteProd = useCallback(function (prodId: string) {
+    submit(null, {
+      action: AbsRoute.DeleteProduct + '/' + prodId,
+      method: 'delete',
+    })
+  }, [])
   return (
     <>
       {prods.length > 0
         ? prods.map((p, index) =>
-          <Row key={p.id} product={p} isGray={index % 2 !== 0} />)
+          <Row key={p.id}
+            product={p} deleteProdFnc={deleteProd}
+            isGray={index % 2 !== 0} />)
         : <tr><td colSpan={6} className="text-center">No products found</td></tr>}
 
     </>

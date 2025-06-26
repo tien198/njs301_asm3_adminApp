@@ -1,11 +1,18 @@
 import type { IProduct } from "../../../interfaces/product";
+
 import { toFraction } from "../../../ulties/toFraction";
+
+
 
 type Props = {
   product: IProduct
   isGray?: boolean
+  deleteProdFnc: (prodId: string) => void
 }
-export default function ProductRow({ product, isGray = false }: Props) {
+export default function ProductRow({ product, isGray = false, deleteProdFnc }: Props) {
+
+
+
   return (
     <tr className={`${isGray ? 'bg-gray-100' : ''} hover:bg-gray-200 text-gray-600`}>
       <td className="px-4 py-2 border border-gray-300">{product.id}</td>
@@ -18,7 +25,8 @@ export default function ProductRow({ product, isGray = false }: Props) {
       <td className="px-4 py-2 border border-gray-300">
         <div className="flex gap-4">
           <button className="bg-green-500 text-white px-4 py-2 rounded hover:cursor-pointer">Update</button>
-          <button className="bg-red-500 text-white px-4 py-2 rounded hover:cursor-pointer">Delete</button>
+          <button className="bg-red-500 text-white px-4 py-2 rounded hover:cursor-pointer"
+            onClick={() => deleteProdFnc(product.id)}>Delete</button>
 
         </div>
       </td>

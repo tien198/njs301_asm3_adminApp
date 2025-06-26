@@ -6,6 +6,7 @@ export type ProductsState = {
 }
 export type ProductsActions = {
     setProducts: (products: IProduct[]) => void
+    removeProduct?: (prodId: string) => void
     setQuery: (query: string) => void
 }
 

@@ -30,6 +30,11 @@ function NavLeftUl() {
                     Products
                 </NavLink>
             </li>
+            <li>
+                <NavLink to={AbsRoute.CreateProduct} end className={navLinkStateClass}>
+                    Create Product
+                </NavLink>
+            </li>
         </ul>
     )
 }

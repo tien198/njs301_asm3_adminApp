@@ -10,6 +10,7 @@ export type ProdLoader = {
 export async function loader(): Promise<ProdLoader> {
     // await isAdmin()
 
-    const products = getDefer<IProduct[]>(ServerAPI.products, true)
+    const products = (getDefer<IProduct[]>(ServerAPI.products, true))
+        .catch(() => undefined)
     return { products }
 }

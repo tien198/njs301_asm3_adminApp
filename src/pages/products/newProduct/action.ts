@@ -1,7 +1,7 @@
 import type { ActionFunctionArgs } from "react-router";
-import { ServerAPI as API } from "../../ulties/serverAPIs";
-import modalStore from "../../components/modal/store";
-import type { IRes } from "../../interfaces/response";
+import { ServerAPI as API } from "../../../ulties/serverAPIs";
+import modalStore from "../../../components/modal/store";
+import type { IRes } from "../../../interfaces/response";
 
 export async function action(args: ActionFunctionArgs) {
     const showModal = modalStore.getState().show

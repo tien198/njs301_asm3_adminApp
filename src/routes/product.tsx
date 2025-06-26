@@ -1,7 +1,7 @@
 import type { RouteObject } from "react-router";
 import { AppRoutes } from "../ulties/appRoutes";
 import Product from "../pages/products";
-import NewProduct from '../pages/newProduct';
+import NewProduct from '../pages/products/newProduct';
 
 const productRouter: RouteObject = {
     path: '',
@@ -15,6 +15,7 @@ const productRouter: RouteObject = {
         {
             path: AppRoutes.CreateProduct,
             element: <NewProduct />,
+            action: (args) => import('../pages/products/newProduct/action').then(i => i.action(args))
         },
         {
             path: AppRoutes.EditProduct,
@@ -22,8 +23,8 @@ const productRouter: RouteObject = {
             loader: () => import('../pages/products/loader').then(m => m.loader())
         },
         {
-            path: AppRoutes.DeleteProduct,
-            action: (args) => import('../pages/deleteProduct/action').then(m => m.action(args))
+            path: AppRoutes.DeleteProduct + '/:id',
+            action: (args) => import('../pages/products/deleteProduct/action').then(m => m.action(args))
         }
     ]
 }
