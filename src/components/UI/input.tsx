@@ -16,7 +16,7 @@ function Container(props: ContainerProps) {
 
 export function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
     return (
-        <input className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+        <input className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-gray-500"
             {...props}
         />
     )
@@ -25,7 +25,7 @@ export function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
 
 export function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
     return (
-        <textarea className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+        <textarea className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-gray-500"
             {...props}
         />
     )

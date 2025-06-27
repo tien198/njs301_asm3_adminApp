@@ -11,7 +11,7 @@ export default function Row({ order }: Props) {
             <td className="p-2">{order.userName}</td>
             <td className="p-2">{order.shippingTracking.phone}</td>
             <td className="p-2">{order.shippingTracking.address}</td>
-            <td className="p-2">{order.totalPrice}</td>
+            <td className="p-2">{order.totalPrice.toLocaleString()} vnđ</td>
             <td className="p-2">{order.shippingTracking.status}</td>
             <td className="p-2">{order.status}</td>
             <td className="p-2">

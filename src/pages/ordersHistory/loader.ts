@@ -9,9 +9,9 @@ export type OrderLoader = {
 }
 
 export function loader(): OrderLoader {
-    const orders = getDefer(API.getOrders, true).catch(() => undefined)
-    const userCount = getDefer(API.userCount, true).catch(() => undefined)
-    const orderCount = getDefer(API.orderCount, true).catch(() => undefined)
+    const orders = getDefer(API.getOrders, true).catch(() => null)
+    const userCount = getDefer(API.userCount, true).catch(() => null)
+    const orderCount = getDefer(API.orderCount, true).catch(() => null)
 
     return {
         userCount, orderCount, orders

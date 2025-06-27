@@ -10,7 +10,7 @@ export default function Error() {
         nav = undefined
 
     let statusText = error.statusText || 'Error'
-    let message = error.data.message || 'Something went wrong!'
+    let message = error.data?.message || 'Something went wrong!'
 
     // message = JSON.parse(error.data).message
     if (error.status === 404) {
@@ -19,11 +19,11 @@ export default function Error() {
     }
     else if (error.status === 401) {
         statusText = error.statusText || 'Unauthorized'
-        message = error.data.message || 'You do not have permission for this resoure.'
+        message = error.data?.message || 'You do not have permission for this resoure.'
         // message = error.data.message
     }
     else if (error.status === 500)
-        message = error.data.message || 'Server error'
+        message = error.data?.message || 'Server error'
 
     return (
         <>

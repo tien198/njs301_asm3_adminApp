@@ -11,8 +11,8 @@ export enum AppRoutes {
     Products = "products",
     Product = "product",
 
-    EditProduct = "edit-product",
     CreateProduct = "create-product",
+    EditProduct = "edit-product",
     DeleteProduct = "delete-product",
 
     Orders = "orders",
@@ -34,8 +34,8 @@ export enum AppRoutes_Abs {
     Products = Admin + AppRoutes.Products,
     Product = Admin + AppRoutes.Product,
 
-    EditProduct = Admin + AppRoutes.EditProduct,
     CreateProduct = Admin + AppRoutes.CreateProduct,
+    EditProduct = Admin + AppRoutes.EditProduct,
     DeleteProduct = Admin + AppRoutes.DeleteProduct,
 
     Orders = Admin + AppRoutes.Orders,

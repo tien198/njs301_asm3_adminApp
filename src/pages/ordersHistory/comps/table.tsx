@@ -1,8 +1,11 @@
-import { Await, useLoaderData } from "react-router";
 import type { OrderLoader } from "../loader";
-import Rows from "./rows";
+import type { IOrder } from "../../../interfaces/order";
+
+import { Await, useLoaderData } from "react-router";
 import { Suspense } from "react";
 import TrFallback from "../../../components/UI/trFallback";
+import { useAsyncValue } from "react-router";
+import Row from "./row";
 
 export default function Table() {
     const loader: OrderLoader = useLoaderData();
@@ -26,11 +29,26 @@ export default function Table() {
                 <tbody>
                     <Suspense fallback={<TrFallback />}>
                         <Await resolve={loader.orders}>
-                            <Rows />
+                            <RowsList />
                         </Await>
                     </Suspense>
                 </tbody>
             </table>
         </div>
     );
+}
+
+
+
+function RowsList() {
+
+    const orders = useAsyncValue() as IOrder[] | undefined;
+    return orders
+        ? orders.map((order, idx) => (
+            <Row key={idx} order={order} />
+        ))
+        : <tr>
+            <td colSpan={8}>Not found orders</td>
+        </tr>
+
 }

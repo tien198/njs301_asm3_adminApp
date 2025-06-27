@@ -2,10 +2,11 @@ import { Outlet, type RouteObject } from "react-router";
 import { AppRoutes } from "../ulties/appRoutes";
 import Login from "../pages/authentication/Login";
 import Signup from "../pages/authentication/Signup";
+import ErrorModal from "../components/modal/ErrorModal";
 
 const authenRouter: RouteObject = {
     path: '',
-    element: <Outlet />,
+    element: <><Outlet /><ErrorModal /></>,
     children: [
         {
             path: AppRoutes.Login,
