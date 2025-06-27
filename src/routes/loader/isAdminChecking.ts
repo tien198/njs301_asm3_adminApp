@@ -13,7 +13,7 @@ export async function isAdmin(): Promise<void> {
     try {
         const show = modalStore.getState().show
 
-        const res = await fetch(API.getStatus, {
+        const res = await fetch(API.isAdmin, {
             credentials: 'include',
         })
 
@@ -26,11 +26,10 @@ export async function isAdmin(): Promise<void> {
                     statusText: json.statusText,
                     status: res.status
                 }
-
             )
         }
 
-        const user = json.user as IUser;
+        const user = json as IUser;
 
         store.dispatch(setAuthen(user))
 

@@ -36,7 +36,7 @@ function Login() {
 
     useEffect(() => {
         if (actionData) {
-            setLoginErrorMsg(actionData.cause?.credential || '')
+            setLoginErrorMsg(actionData.data?.credential || '')
         }
     }, [actionData])
 

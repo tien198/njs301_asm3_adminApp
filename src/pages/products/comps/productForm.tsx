@@ -1,4 +1,4 @@
-import { Form, type HTMLFormMethod } from "react-router";
+import { Form, useNavigation, type HTMLFormMethod } from "react-router";
 import F, { Input, TextArea } from "../../../components/UI/input";
 import useTwoWayBinding from "../../../hooks/useTwoWayBinding";
 import type { IProduct } from "../../../interfaces/product";
@@ -12,6 +12,8 @@ type Props = {
 }
 
 export default function ProdForm({ product, action, method, isLoading = false }: Props) {
+
+    const { state } = useNavigation()
 
     const [name, onChangeName] = useTwoWayBinding(product?.name ?? '')
     const [category, onChangeCategory] = useTwoWayBinding(product?.category ?? '')
@@ -65,7 +67,7 @@ export default function ProdForm({ product, action, method, isLoading = false }:
                 />
             </div>
 
-            <button
+            <button disabled={state === 'submitting'}
                 type="submit"
                 className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition duration-200"
             >

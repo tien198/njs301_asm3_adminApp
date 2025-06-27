@@ -1,6 +1,6 @@
 export async function getDefer<T = any>(
     url: string, includeCookie: boolean = false, token?: string
-): Promise<T> {
+): Promise<T | null> {
     const headers: HeadersInit = {}
     if (token)
         headers['Authorization'] = `Bearer ${token}`
@@ -10,7 +10,7 @@ export async function getDefer<T = any>(
         credentials: includeCookie ? 'include' : 'same-origin'
     })
     if (!res.ok) {
-        throw new Error('Failed to fetch products')
+        return null
     }
     return await res.json()
 }

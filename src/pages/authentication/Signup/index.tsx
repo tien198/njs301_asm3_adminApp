@@ -48,8 +48,8 @@ function Authenticate() {
     const [uniqueEmailMsg, setUniqueEmailMsg] = useState('')
     useEffect(() => {
         if (actionData) {
-            if (actionData?.cause?.email)
-                setUniqueEmailMsg(actionData.cause.email)
+            if (actionData?.data?.email)
+                setUniqueEmailMsg(actionData.data.email)
         }
     }, [actionData])
 

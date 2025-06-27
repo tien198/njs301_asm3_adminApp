@@ -4,13 +4,12 @@ import { getDefer } from "../../ulties/fetcher/getDerfer";
 import { ServerAPI } from "../../ulties/serverAPIs";
 
 export type ProdLoader = {
-    products: Promise<IProduct[] | undefined>
+    products: Promise<IProduct[] | null>
 }
 
 export async function loader(): Promise<ProdLoader> {
-    // await isAdmin()
 
     const products = (getDefer<IProduct[]>(ServerAPI.products, true))
-        .catch(() => undefined)
+        .catch(() => null)
     return { products }
 }
