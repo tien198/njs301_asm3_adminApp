@@ -26,11 +26,10 @@ export async function action(args: ActionFunctionArgs) {
         }
         productsStore.getState().removeProduct?.(prodId)
         return redirect(AbsRoute.Products)
-    } catch (error) {
-        console.error(error)
-
-        showModal('error', {
-            message: `Couldn't delete product with id: "${prodId}"`
-        })
+    } catch (error: any) {
+        if (!error.status)
+            showModal('error', {
+                statusText: `Couldn't delete product with id: "${prodId}"`
+            })
     }
 }
