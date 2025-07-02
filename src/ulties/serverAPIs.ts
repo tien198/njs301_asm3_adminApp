@@ -1,6 +1,6 @@
 export enum ServerAPI {
-    base = 'https://njs301asm3server-production.up.railway.app/',
-    // base = 'http://localhost:5000/',
+    // base = 'https://njs301asm3server-production.up.railway.app/',
+    base = 'http://localhost:5000/',
     api = base + 'api/',
     admin = 'admin/',
 
