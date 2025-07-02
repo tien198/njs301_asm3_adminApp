@@ -9,4 +9,7 @@ export interface IProduct {
     price: string | number
     long_desc: string
     short_desc: string
+    totalQuantity: number
+    availableQuantity: number
+    reservedQuantity: number
 }

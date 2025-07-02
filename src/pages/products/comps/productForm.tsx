@@ -17,6 +17,7 @@ export default function ProdForm({ product, action, method, isLoading = false }:
 
     const [name, onChangeName] = useTwoWayBinding(product?.name ?? '')
     const [category, onChangeCategory] = useTwoWayBinding(product?.category ?? '')
+    const [quantity, onChangeQuantity] = useTwoWayBinding(product?.totalQuantity ?? '0')
     const [price, onChangePrice] = useTwoWayBinding(product?.price ?? '0')
     const [shortDesc, onChangeShortDesc] = useTwoWayBinding(product?.short_desc ?? '')
     const [longDesc, onChangeLongDesc] = useTwoWayBinding(product?.long_desc ?? '')
@@ -36,6 +37,11 @@ export default function ProdForm({ product, action, method, isLoading = false }:
             <F.Container label="Category">
                 <Input placeholder="Enter Category" disabled={isLoading}
                     name='category' value={category} onChange={onChangeCategory} />
+            </F.Container>
+
+            <F.Container label="Quantity">
+                <Input placeholder="Enter In Stoke Quantity" disabled={isLoading} type="number"
+                    name='totalQuantity' value={quantity} onChange={onChangeQuantity} />
             </F.Container>
 
             <F.Container label="Short Description" >
