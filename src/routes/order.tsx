@@ -15,7 +15,7 @@ const orderRouter: RouteObject = {
         {
             path: 'order/:id',
             element: <Order />,
-            loader: () => import('../pages/ordersHistory/loader').then(m => m.loader())
+            loader: (args) => import('../pages/order/loader').then(m => m.loader(args))
         }
     ]
 }
