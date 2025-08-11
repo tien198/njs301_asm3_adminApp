@@ -17,8 +17,8 @@ export async function action(args: ActionFunctionArgs) {
             headers: {
                 // MIME type (media type || content type)
                 'content-type': 'application/json',
-                'Access-Control-Allow-Credentials': 'true',
-                'Access-Control-Allow-Origin': 'https://minhtien-admin.vercel.app'
+                // 'Access-Control-Allow-Credentials': 'true',
+                // 'Access-Control-Allow-Origin': 'https://minhtien-admin.vercel.app'
             },
             body: JSON.stringify(data),
             credentials: 'include'
